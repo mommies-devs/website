@@ -13,6 +13,7 @@
     "@astrojs/check": "^0.8.0",
     "@astrojs/react": "^3.6.0",
     "@astrojs/tailwind": "^5.1.0",
+    "@bozzhik/is-mobile": "^0.1.1",
     "@radix-ui/react-slot": "^1.1.0",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
