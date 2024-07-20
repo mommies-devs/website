@@ -19,7 +19,7 @@ const {style, typography} = blockStyles
 
 export default function Block({heading, text, image, link, linkZone = 'image'}: Props) {
   const BlockLink = (
-    <a href={link} className="grid rounded min-w-9 sm:h-10 bg-background place-items-center">
+    <a href={link} className="grid duration-200 rounded min-w-9 sm:h-10 bg-background place-items-center hover:bg-primary">
       <img className="w-9 sm:w-7" src={ArrowLink.src} alt="arrow link" />
     </a>
   )
@@ -32,8 +32,8 @@ export default function Block({heading, text, image, link, linkZone = 'image'}: 
   )
 
   const BlockImage = (
-    <div className="rounded bg-background">
-      <img src={image?.src} alt={heading ? 'work image' : ''} />
+    <div className="rounded bg-background h-[30vh] w-full overflow-hidden group">
+      <img className="object-cover duration-500 s-full group-hover:scale-[103%]" src={image?.src} alt={heading ? 'work image' : ''} />
     </div>
   )
 
