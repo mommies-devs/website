@@ -1,7 +1,7 @@
 import {isMobile} from '@bozzhik/is-mobile'
 import {cn} from '@/lib/utils'
 
-import ArrowLink from '%/arrow.svg'
+import {ChevronRight} from 'lucide-react'
 
 interface Props {
   heading?: string
@@ -20,7 +20,7 @@ const {style, typography} = blockStyles
 export default function Block({heading, text, image, link, linkZone = 'image'}: Props) {
   const BlockLink = (
     <a href={link} className="grid duration-200 rounded min-w-9 sm:h-10 bg-background place-items-center hover:bg-primary">
-      <img className="w-9 sm:w-7" src={ArrowLink.src} alt="arrow link" />
+      <ChevronRight className="stroke-foreground s-9 sm:s-7" />
     </a>
   )
 
