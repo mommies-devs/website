@@ -1,9 +1,12 @@
 import {cn} from '@/lib/utils'
+import ArrowLink from '%/arrow.svg'
 
 interface Props {
   heading?: string
   text?: string | TrustedHTML
   image?: any
+  link?: string
+  linkZone?: 'text' | 'image'
 }
 
 export const blockStyles = {
@@ -12,15 +15,45 @@ export const blockStyles = {
 }
 const {style, typography} = blockStyles
 
-export default function Block({heading, text, image}: Props) {
+export default function Block({heading, text, image, link, linkZone = 'image'}: Props) {
+  const BlockLink = (
+    <a href={link} className="grid rounded min-w-9 bg-background place-items-center">
+      <img className="!w-9" src={ArrowLink.src} alt="arrow link" />
+    </a>
+  )
+
+  const BlockText = (
+    <div className="space-y-2.5">
+      <h1>{heading}</h1>
+      <p dangerouslySetInnerHTML={{__html: text as string}}></p>
+    </div>
+  )
+
+  const BlockImage = (
+    <div className="rounded bg-background">
+      <img src={image?.src} alt={heading ? 'work image' : ''} />
+    </div>
+  )
+
   return (
     <article className={cn([style, typography], 'space-y-4')}>
-      <div className="space-y-2.5">
-        <h1>{heading}</h1>
-        <p dangerouslySetInnerHTML={{__html: text as string}}></p>
-      </div>
+      {link && linkZone === 'text' ? (
+        <div className="flex gap-4">
+          {BlockText}
+          {BlockLink}
+        </div>
+      ) : (
+        BlockText
+      )}
 
-      <img className="rounded bg-background" src={image.src} alt={heading ? 'work image' : ''} />
+      {link && linkZone === 'image' ? (
+        <div className="flex gap-2.5">
+          {BlockImage}
+          {BlockLink}
+        </div>
+      ) : (
+        BlockImage
+      )}
     </article>
   )
 }
