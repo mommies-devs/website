@@ -1,12 +1,13 @@
 ---
 import Layout from '@/layouts/Layout.astro'
+import TextBlock from '#/UI/TextBlock'
 import Block from '#/UI/Block'
 
 import {hero, test} from '../lib/landing-data'
 ---
 
 <Layout className="space-y-[20px]">
-  <!-- <Block text={hero.text} /> -->
+  <TextBlock text={hero.text} />
 
   <Block heading={test.heading} text={test.text} image={test.image} />
   <Block heading={test.heading} text={test.text} image={test.image} />
