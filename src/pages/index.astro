@@ -3,13 +3,19 @@ import Layout from '@/layouts/Layout.astro'
 import TextBlock from '#/UI/TextBlock'
 import Block from '#/UI/Block'
 
-import {hero, test} from '../lib/landing-data'
+import {hero, test, test2, test3} from '../lib/landing-data'
 ---
 
-<Layout className="space-y-[20px]">
+<Layout className="flex flex-col gap-[20px]">
   <TextBlock text={hero.text} />
 
-  <Block heading={test.heading} text={test.text} image={test.image} />
-  <Block heading={test.heading} text={test.text} image={test.image} link={test.link} linkZone="image" />
-  <Block heading={test.heading} text={test.text} image={test.image} link={test.link} linkZone="text" />
+  <Block client:load id={test.id} heading={test.heading} text={test.text} image={test.image} />
+  <Block client:load id={test2.id} heading={test2.heading} text={test2.text} image={test2.image} link={test2.link} linkZone="image" />
+  <Block client:load id={test3.id} heading={test3.heading} text={test3.text} image={test3.image} link={test3.link} linkZone="text" />
+  <Block client:load id={test.id} heading={test.heading} text={test.text} image={test.image} />
+  <Block client:load id={test2.id} heading={test2.heading} text={test2.text} image={test2.image} link={test2.link} linkZone="image" />
+  <Block client:load id={test3.id} heading={test3.heading} text={test3.text} image={test3.image} link={test3.link} linkZone="text" />
+  <Block client:load id={test.id} heading={test.heading} text={test.text} image={test.image} />
+  <Block client:load id={test2.id} heading={test2.heading} text={test2.text} image={test2.image} link={test2.link} linkZone="image" />
+  <Block client:load id={test3.id} heading={test3.heading} text={test3.text} image={test3.image} link={test3.link} linkZone="text" />
 </Layout>

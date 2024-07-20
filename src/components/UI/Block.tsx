@@ -1,9 +1,12 @@
 import {isMobile} from '@bozzhik/is-mobile'
 import {cn} from '@/lib/utils'
 
+import {motion} from 'framer-motion'
+
 import ArrowLink from '%/arrow.svg'
 
 interface Props {
+  id: number
   heading?: string
   text?: string | TrustedHTML
   image?: any
@@ -17,7 +20,7 @@ export const blockStyles = {
 }
 const {style, typography} = blockStyles
 
-export default function Block({heading, text, image, link, linkZone = 'image'}: Props) {
+export default function Block({id, heading, text, image, link, linkZone = 'image'}: Props) {
   const BlockLink = (
     <a href={link} className="grid duration-200 rounded min-w-9 sm:h-10 bg-background place-items-center hover:bg-primary">
       <img className="w-9 sm:w-7" src={ArrowLink.src} alt="arrow link" />
@@ -27,6 +30,7 @@ export default function Block({heading, text, image, link, linkZone = 'image'}: 
   const BlockText = (
     <div className="space-y-2.5">
       <h1>{heading}</h1>
+      {id}
       <p dangerouslySetInnerHTML={{__html: text as string}}></p>
     </div>
   )
@@ -37,8 +41,32 @@ export default function Block({heading, text, image, link, linkZone = 'image'}: 
     </div>
   )
 
+  const fadeInAnimation = {
+    initial: {
+      opacity: 0,
+      y: 100,
+    },
+    animate: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: 0.5,
+        duration: 0.3,
+      },
+    },
+  }
+
   return (
-    <article className={cn([style, typography], 'sm:space-y-2.5')}>
+    <motion.article
+      className={cn([style, typography], 'sm:space-y-2.5')} // привет
+      variants={fadeInAnimation}
+      initial="initial"
+      whileInView="animate"
+      viewport={{
+        once: true,
+      }}
+      custom={id}
+    >
       <div className="space-y-4">
         {link && linkZone === 'text' ? (
           <div className="flex gap-4">
@@ -60,6 +88,6 @@ export default function Block({heading, text, image, link, linkZone = 'image'}: 
       </div>
 
       {isMobile && link && BlockLink}
-    </article>
+    </motion.article>
   )
 }
