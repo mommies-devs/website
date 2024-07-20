@@ -7,7 +7,7 @@
       "@layouts/*": ["./src/layouts/*"],
       "#/*": ["./src/components/*"],
       "##/*": ["./src/components/Landing/*"],
-      "%/*": ["./src/assets/*"]
+      "%/*": ["./src/assets/images/*"]
     },
     "jsx": "react-jsx",
     "jsxImportSource": "react"

@@ -23,7 +23,7 @@ export default function Block({heading, text, image}: Props) {
         </div>
       )}
 
-      {image && <img className="rounded-md bg-background" src={image.src} alt={heading && 'work image'} />}
+      <img className="rounded bg-background" src={image.src} alt={heading ? 'work image' : ''} />
     </article>
   )
 }

@@ -2,25 +2,12 @@
 import Layout from '@/layouts/Layout.astro'
 import Block from '#/UI/Block'
 
-import TestImage from '../assets/images/test.png'
-
-const indexData = {
-  hero: {
-    text: `Hey there, we are Mommie's Devs 👀. A team of developers creating innovative software products. More about my experience read <a href="/about" class="text-primary hover:underline">here</a>.`,
-  },
-
-  test: {
-    heading: `SOME PROJECT`,
-    text: `Our team developed a software solution that enhances productivity and streamlines workflows.`,
-    image: TestImage,
-  },
-}
-
-const {hero, test} = indexData
+import {hero, test} from '../lib/landing-data'
 ---
 
 <Layout className="space-y-[20px]">
-  <Block text={hero.text} />
+  <!-- <Block text={hero.text} /> -->
 
+  <Block heading={test.heading} text={test.text} image={test.image} />
   <Block heading={test.heading} text={test.text} image={test.image} />
 </Layout>
