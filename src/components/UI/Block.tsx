@@ -1,17 +1,29 @@
 import {cn} from '@/lib/utils'
 
 interface Props {
-  children: React.ReactNode
+  heading?: string
+  text?: string | TrustedHTML
+  image?: any
 }
 
-export default function Block({children}: Props) {
-  const blockStyles = {
-    size: 'w-full p-5 rounded-lg',
-    text: 'text-[26px] sm:text-[24px] leading-[1.20]',
-    colors: 'bg-foreground text-background',
-  }
+const blockStyles = {
+  style: 'w-full p-5 rounded-lg bg-foreground text-background',
+  typography: 'text-[26px] sm:text-[24px] leading-[1.20]',
+}
 
-  const {size, text, colors} = blockStyles
+export default function Block({heading, text, image}: Props) {
+  const {style, typography} = blockStyles
 
-  return <article className={cn(size, text, colors)}>{children}</article>
+  return (
+    <article className={cn([style, typography], 'space-y-4')}>
+      {(heading || text) && (
+        <div className="space-y-2.5">
+          {heading && <h1>{heading}</h1>}
+          {text && <p dangerouslySetInnerHTML={{__html: text as string}}></p>}
+        </div>
+      )}
+
+      {image && <img className="rounded-md bg-background" src={image.src} alt={heading && 'work image'} />}
+    </article>
+  )
 }
