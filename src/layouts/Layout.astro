@@ -7,6 +7,8 @@ const metadata = {
 }
 
 import Container from '#/Global/Container'
+
+const {className} = Astro.props
 ---
 
 <!doctype html>
@@ -36,8 +38,8 @@ import Container from '#/Global/Container'
     <meta property="twitter:description" content={metadata.description} />
     <meta property="twitter:image" content="/og.png" />
   </head>
-  <body class="relative font-sans tracking-tight bg-background text-foreground">
-    <Container>
+  <body class="font-sans tracking-tight bg-background">
+    <Container {className}>
       <slot />
     </Container>
   </body>

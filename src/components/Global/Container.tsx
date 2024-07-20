@@ -1,7 +1,18 @@
+import {cn} from '@/lib/utils'
+
 interface Props {
   children: React.ReactNode
+  className: string
 }
 
-export default function Container({children}: Props) {
-  return <main className="w-[35%] mx-auto pt-[20vh] sm:w-auto sm:mx-2">{children}</main>
+export default function Container({children, className}: Props) {
+  const containerStyles = {
+    width: 'w-[660px] md:w-[600px] sm:w-auto',
+    padding: 'pt-[250px] xl:pt-[200px] md:pt-[150px] sm:pt-[125px]',
+    margin: 'mx-auto sm:mx-4',
+  }
+
+  const {width, padding, margin} = containerStyles
+
+  return <main className={cn([width, padding, margin], className)}>{children}</main>
 }
